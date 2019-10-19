@@ -3,23 +3,16 @@ import 'package:career_guidance/redux/actions.dart';
 
 AppState appStateReducer(AppState state, action) {
   return AppState(
-    items: itemReducer(state.items, action),
+    professiograms: professiogramReducer(state.professiograms, action),
   );
 }
 
-List<Item> itemReducer(List<Item> state, action) {
-  if (action is AddItemAction) {
+List<Professiogram> professiogramReducer(List<Professiogram> state, action) {
+  if (action is SetProfessiogramsFromJsonAction) {
+    print('gerter');
     return []
       ..addAll(state)
-      ..add(Item(id: action.id, body: action.item));
-  }
-
-  if (action is RemoveItemAction) {
-    return List.unmodifiable(List.from(state)..remove(action.item));
-  }
-
-  if (action is RemoveItemsAction) {
-    return List.unmodifiable([]);
+      ..addAll(action.professiograms);
   }
 
   return state;

@@ -1,28 +1,54 @@
 import 'package:flutter/foundation.dart';
 
-class Item {
-  final int id;
-  final String body;
+class Professiogram {
+  // final int id;
+  final String name;
+  final String description;
+  final String knowledge;
+  final String importantProperty;
+  final String medicalContraindications;
+  final String ways;
 
-  Item({
-    @required this.id,
-    @required this.body,
+  Professiogram({
+    // @required this.id,
+    @required this.name,
+    @required this.description,
+    @required this.knowledge,
+    @required this.importantProperty,
+    @required this.medicalContraindications,
+    @required this.ways,
   });
 
-  Item copyWith({int id, String body}) {
-    return Item(
-      id: id ?? this.id,
-      body: body ?? this.body,
+  factory Professiogram.fromJson(dynamic parsedJson){
+    return Professiogram(
+    name:parsedJson['name'],
+     description:parsedJson['description'],
+     knowledge:parsedJson['knowledge'],
+     importantProperty:parsedJson['importantProperty'],
+     medicalContraindications:parsedJson['medicalContraindications'],
+    ways: parsedJson['ways'],
+    );
+  }
+
+  Professiogram copyWith({int id, String name}) {
+    return Professiogram(
+      // id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      knowledge: knowledge ?? this.knowledge,
+      importantProperty: importantProperty ?? this.importantProperty,
+      medicalContraindications: medicalContraindications ?? this.medicalContraindications,
+      ways: ways ?? this.ways,
     );
   }
 }
 
 class AppState {
-  final List<Item> items;
+  final List<Professiogram> professiograms;
 
   AppState({
-    @required this.items,
+    @required this.professiograms,
   });
 
-  AppState.initialState() : items = List.unmodifiable(<Item>[]);
+  AppState.initialState() : professiograms = List.unmodifiable(<Professiogram>[]);
 }

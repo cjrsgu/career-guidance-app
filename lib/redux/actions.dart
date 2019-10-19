@@ -1,20 +1,12 @@
 import 'package:career_guidance/model/model.dart';
 
-class AddItemAction {
-  static int _id = 0;
-  final String item;
+class SetProfessiogramsFromJsonAction {
+  // int _id;
+  List<Professiogram> _professiograms;
 
-  AddItemAction(this.item) {
-    _id++;
+  SetProfessiogramsFromJsonAction(item) {
+    this._professiograms =  List<Professiogram>.generate(item.length, (i) => Professiogram.fromJson(item[i]));
   }
 
-  int get id => _id;
+  List<Professiogram> get professiograms => _professiograms;
 }
-
-class RemoveItemAction {
-  final Item item;
-
-  RemoveItemAction(this.item);
-}
-
-class RemoveItemsAction {}

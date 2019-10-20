@@ -10,11 +10,11 @@ class Professiogram {
 
   Professiogram({
     @required this.name,
-    this.description,
-    this.knowledge,
-    this.importantProperty,
-    this.medicalContraindications,
-    this.ways,
+    @required this.description,
+    @required this.knowledge,
+    @required this.importantProperty,
+    @required this.medicalContraindications,
+    @required this.ways,
   });
 
   Professiogram copyWith({String name, String description, String knowledge, String importantProperty, String medicalContraindications, String ways}) {

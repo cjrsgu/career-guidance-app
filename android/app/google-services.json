@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "818058853752",
+    "firebase_url": "https://career-guidance-cjvnjde.firebaseio.com",
+    "project_id": "career-guidance-cjvnjde",
+    "storage_bucket": "career-guidance-cjvnjde.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818058853752:android:f52c958f771e3c1482dc8d",
+        "android_client_info": {
+          "package_name": "com.cjvnjde.career_guidance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818058853752-k21spfo1ueb959hijebbia6thj5ueek1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOguRjyMjTmm_-ui86ibnSyTLJFN5I4jE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818058853752-k21spfo1ueb959hijebbia6thj5ueek1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

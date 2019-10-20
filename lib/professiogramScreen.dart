@@ -13,50 +13,51 @@ class ProfessiogramScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(professiograms.name),
         ),
-        body: Column(
+        body: ListView(
+        padding: const EdgeInsets.all(8),
           children: <Widget>[
             Container(
-              child: Text(
+              child: professiograms.description != '' ? Text(
                 'Особенности профессии:',
                 style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              ) : null,
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
-              child: Text(professiograms.description),
+              child: professiograms.description != '' ? Text(professiograms.description) : null,
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
-              child: Text(
+              child: professiograms.importantProperty != '' ? Text(
                 'Профессионально важные качества:',
                 style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              ) : null,
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
-              child: Text(professiograms.importantProperty),
+              child: professiograms.importantProperty != '' ? Text(professiograms.importantProperty) : null,
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
-              child: Text(
+              child: professiograms.medicalContraindications != '' ? Text(
                 'Медицинские противопоказания:',
                 style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              ) : null,
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
-              child: Text(professiograms.medicalContraindications),
+              child: professiograms.medicalContraindications != '' ? Text(professiograms.medicalContraindications) : null,
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
-              child: Text(
+              child: professiograms.ways != '' ? Text(
                 'Пути получения профессии:',
                 style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              ) : null,
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
-              child: Text(professiograms.ways),
+              child: professiograms.ways != '' ? Text(professiograms.ways) : null,
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
           ],

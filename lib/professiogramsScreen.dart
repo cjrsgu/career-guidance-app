@@ -23,11 +23,7 @@ class ProfessiogramsScreen extends StatelessWidget {
 class ProfessiogramsList extends StatelessWidget {
   final _ViewModel model;
 
-  ProfessiogramsList(this.model) {
-    // if (model.professiograms.length == 0) {
-    //   model.onSetProfessiogramsFromJson();
-    // }
-  }
+  ProfessiogramsList(this.model);
 
   @override
   Widget build(BuildContext context) {
@@ -63,28 +59,14 @@ class ProfessiogramsList extends StatelessWidget {
 
 class _ViewModel {
   final List<Professiogram> professiograms;
-  final Function() onSetProfessiogramsFromJson;
 
   _ViewModel({
     this.professiograms,
-    this.onSetProfessiogramsFromJson,
   });
 
   factory _ViewModel.create(Store<AppState> store) {
-    _onSetProfessiogramsFromJsonAsync(Store<AppState> store) async {
-      String jsonString =
-          await rootBundle.loadString('assets/professiograms.json');
-      List<dynamic> item = json.decode(jsonString)['professiograms'].toList();
-      store.dispatch(SetProfessiogramsFromJsonAction(item));
-    }
-
-    _onSetProfessiogramsFromJson() {
-      store.dispatch(_onSetProfessiogramsFromJsonAsync);
-    }
-
     return _ViewModel(
       professiograms: store.state.professiograms,
-      onSetProfessiogramsFromJson: _onSetProfessiogramsFromJson,
     );
   }
 }

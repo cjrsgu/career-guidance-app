@@ -1,17 +1,6 @@
 import 'package:career_guidance/model/model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class SetProfessiogramsFromJsonAction {
-  List<Professiogram> _professiograms;
-
-  SetProfessiogramsFromJsonAction(item) {
-    this._professiograms = List<Professiogram>.generate(
-      item.length, (i) => Professiogram.fromJson(item[i]));
-  }
-
-  List<Professiogram> get professiograms => _professiograms;
-}
-
 class SetTestsFromJsonAction {
   List<Test> _tests;
 

@@ -10,23 +10,12 @@ class Professiogram {
 
   Professiogram({
     @required this.name,
-    @required this.description,
-    @required this.knowledge,
-    @required this.importantProperty,
-    @required this.medicalContraindications,
-    @required this.ways,
+    this.description,
+    this.knowledge,
+    this.importantProperty,
+    this.medicalContraindications,
+    this.ways,
   });
-
-  factory Professiogram.fromJson(dynamic parsedJson){
-    return Professiogram(
-      name:parsedJson['name'],
-      description:parsedJson['description'],
-      knowledge:parsedJson['knowledge'],
-      importantProperty:parsedJson['importantProperty'],
-      medicalContraindications:parsedJson['medicalContraindications'],
-      ways: parsedJson['ways'],
-    );
-  }
 
   Professiogram copyWith({String name, String description, String knowledge, String importantProperty, String medicalContraindications, String ways}) {
     return Professiogram(

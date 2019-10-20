@@ -13,11 +13,11 @@ List<Professiogram> professiogramReducer(List<Professiogram> state, action) {
     List<Professiogram> list = [];
     action.data.documents.forEach((f) => list.add(Professiogram(
         name: f.data['name'],
-        description: f.data['description'],
-        knowledge: f.data['knowledge'],
-        importantProperty: f.data['importantProperty'],
-        medicalContraindications: f.data['medicalContraindications'],
-        ways: f.data['ways'],
+        description: f.data['description'] ?? '',
+        knowledge: f.data['knowledge'] ?? '',
+        importantProperty: f.data['importantProperty'] ?? '',
+        medicalContraindications: f.data['medicalContraindications'] ?? '',
+        ways: f.data['ways'] ?? '',
       ))
     );
 

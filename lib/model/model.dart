@@ -79,16 +79,13 @@ class Test {
 
 class AppState {
   final List<Professiogram> professiograms;
-  final List<Professiogram> questions;
   final List<Test> tests;
 
   AppState({
     @required this.professiograms,
-    @required this.questions,
     @required this.tests,
   });
 
   AppState.initialState() : professiograms = List.unmodifiable(<Professiogram>[]),
-  questions = List.unmodifiable(<Professiogram>[]),
   tests = List.unmodifiable(<Test>[]);
 }

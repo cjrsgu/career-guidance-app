@@ -5,24 +5,34 @@ import 'package:career_guidance/testsScreen.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
+import 'package:redux_epics/redux_epics.dart';
 
 import 'package:career_guidance/model/model.dart';
 import 'package:career_guidance/redux/reducers.dart';
+import 'package:career_guidance/redux/actions.dart';
+import 'package:rxdart/rxdart.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() => runApp(App());
 
 class App extends StatelessWidget {
+  final allEpics = combineEpics<AppState>([professiogramsEpic]);
+
   @override
   Widget build(BuildContext context) {
     final Store<AppState> store = Store<AppState>(
       appStateReducer,
       initialState: AppState.initialState(),
-      middleware: [thunkMiddleware],
+      middleware: [thunkMiddleware, EpicMiddleware(allEpics)],
     );
 
     return StoreProvider<AppState>(
       store: store,
-      child: Root(),
+      child: StoreBuilder(
+        onInit: (store) => store.dispatch(RequestDataEventsAction()),
+        onDispose: (store) => store.dispatch(CancelDataEventsAction()),
+        builder: (BuildContext context, Store<AppState> store) => Root(),
+      ),
     );
   }
 }
@@ -75,4 +85,20 @@ class RootState extends State<Root> {
               ]),
         ));
   }
+}
+Stream<dynamic> professiogramsEpic(Stream<dynamic> actions, EpicStore<AppState> store) {
+  return Observable(actions)
+      .ofType(TypeToken<RequestDataEventsAction>())
+      .switchMap((RequestDataEventsAction requestAction) {
+        return getProfessiograms()
+            .map((data) => ProfessiogramsOnDataEventAction(data))
+            .takeUntil(actions.where((action) => action is CancelDataEventsAction));
+  });
+}
+
+Observable<dynamic> getProfessiograms() {
+  return Observable(Firestore.instance.collection('professiograms').snapshots())
+      .map((snapshot) {
+        return snapshot;
+      });
 }

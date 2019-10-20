@@ -24,9 +24,9 @@ class ProfessiogramsList extends StatelessWidget {
   final _ViewModel model;
 
   ProfessiogramsList(this.model) {
-    if (model.professiograms.length == 0) {
-      model.onSetProfessiogramsFromJson();
-    }
+    // if (model.professiograms.length == 0) {
+    //   model.onSetProfessiogramsFromJson();
+    // }
   }
 
   @override

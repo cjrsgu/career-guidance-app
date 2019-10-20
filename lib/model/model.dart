@@ -60,16 +60,19 @@ class Question {
 class Test {
   final int id;
   final String name;
+  final List<Question> questions;
 
   Test({
     @required this.id,
     @required this.name,
+    @required this.questions,
   });
 
   Test copyWith({int id, String name }) {
     return Test(
       id: id ?? this.id,
       name: name ?? this.name,
+      questions: questions ?? this.questions,
     );
   }
 }

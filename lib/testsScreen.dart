@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:career_guidance/professiogramScreen.dart';
+import 'package:career_guidance/testScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_redux/flutter_redux.dart';
@@ -47,13 +47,13 @@ class TestsList extends StatelessWidget {
                   )),
                 ),
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) =>
-                  //         ProfessiogramScreen(professiograms: professiogram),
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                        TestScreen(questions: test.questions, name: test.name),
+                    ),
+                  );
                 },
               ))
           .toList(),
@@ -75,7 +75,7 @@ class _ViewModel {
       String jsonString =
           await rootBundle.loadString('assets/tests.json');
       List<dynamic> item = json.decode(jsonString)['tests'].toList();
-      print(item);
+
       store.dispatch(SetTestsFromJsonAction(item));
     }
 

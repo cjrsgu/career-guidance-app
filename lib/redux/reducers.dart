@@ -31,10 +31,15 @@ List<Question> questionReducer(List<Question> state, action) {
 
 List<Test> testReducer(List<Test> state, action) {
   if (action is SetTestsFromJsonAction) {
-    print('gerter');
     return []
       ..addAll(state)
       ..addAll(action.tests);
+  }
+
+  if (action is SetAnswerAction) {
+    List<Test> newstate = []..addAll(state);
+    newstate[action.testId].questions[action.id] = Question(question: newstate[action.testId].questions[action.id].question, answer: action.answer);
+    return []..addAll(newstate);
   }
 
   return state;

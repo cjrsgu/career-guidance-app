@@ -37,3 +37,21 @@ class SetTestsFromJsonAction {
 
   List<Test> get tests => _tests;
 }
+
+class SetAnswerAction {
+  int _id;
+  int _answer;
+  int _testId;
+
+  SetAnswerAction(id, answer, testId) {
+    this._id = id;
+    this._answer = answer;
+    this._testId = testId;
+  }
+
+  get id => this._id;
+
+  get answer => this._answer;
+
+  get testId => this._testId;
+}

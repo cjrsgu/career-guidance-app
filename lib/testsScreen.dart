@@ -51,7 +51,7 @@ class TestsList extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                        TestScreen(questions: test.questions, name: test.name),
+                        TestScreen(questions: test.questions, name: test.name, setAnswer: model.onSetAnswer, testId: test.id),
                     ),
                   );
                 },
@@ -64,10 +64,12 @@ class TestsList extends StatelessWidget {
 class _ViewModel {
   final List<Test> tests;
   final Function() onSetTestsFromJson;
+  final Function(int id, int answer, int testId) onSetAnswer;
 
   _ViewModel({
     this.tests,
     this.onSetTestsFromJson,
+    this.onSetAnswer,
   });
 
   factory _ViewModel.create(Store<AppState> store) {
@@ -83,9 +85,14 @@ class _ViewModel {
       store.dispatch(_onSetTestsFromJsonAsync);
     }
 
+    _onSetAnswer(id, answer, testId) {
+      store.dispatch(SetAnswerAction(id, answer, testId));
+    }
+
     return _ViewModel(
       tests: store.state.tests,
       onSetTestsFromJson: _onSetTestsFromJson,
+      onSetAnswer: _onSetAnswer,
     );
   }
 }

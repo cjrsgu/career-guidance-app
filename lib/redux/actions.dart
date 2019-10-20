@@ -1,7 +1,6 @@
 import 'package:career_guidance/model/model.dart';
 
 class SetProfessiogramsFromJsonAction {
-  // int _id;
   List<Professiogram> _professiograms;
 
   SetProfessiogramsFromJsonAction(item) {
@@ -9,4 +8,23 @@ class SetProfessiogramsFromJsonAction {
   }
 
   List<Professiogram> get professiograms => _professiograms;
+}
+class SetQuestionsFromJsonAction {
+  List<Question> _questions;
+
+  SetQuestionsFromJsonAction(item) {
+    this._questions =  List<Question>.generate(item.length, (i) => Question(question: item[i], answer: 0));
+  }
+
+  List<Question> get questions => _questions;
+}
+
+class SetTestsFromJsonAction {
+  List<Test> _tests;
+
+  SetTestsFromJsonAction(item) {
+    this._tests =  List<Test>.generate(item.length, (i) => Test(name: item[i]['name'], id: item[i]['id']));
+  }
+
+  List<Test> get tests => _tests;
 }

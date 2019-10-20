@@ -16,7 +16,10 @@ class ProfessiogramScreen extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Container(
-              child: Text('Особенности профессии:'),
+              child: Text(
+                'Особенности профессии:',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
@@ -24,7 +27,10 @@ class ProfessiogramScreen extends StatelessWidget {
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
-              child: Text('Профессионально важные качества:'),
+              child: Text(
+                'Профессионально важные качества:',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
@@ -32,7 +38,10 @@ class ProfessiogramScreen extends StatelessWidget {
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
-              child: Text('Медицинские противопоказания:'),
+              child: Text(
+                'Медицинские противопоказания:',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
@@ -40,7 +49,10 @@ class ProfessiogramScreen extends StatelessWidget {
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(
-              child: Text('Пути получения профессии:'),
+              child: Text(
+                'Пути получения профессии:',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               alignment: AlignmentDirectional(-1.0, -1.0),
             ),
             Container(

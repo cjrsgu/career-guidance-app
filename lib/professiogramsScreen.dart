@@ -10,37 +10,21 @@ import 'package:career_guidance/model/model.dart';
 import 'package:career_guidance/redux/actions.dart';
 
 class ProfessiogramsScreen extends StatelessWidget {
-  bool fetched = false;
-
-  setFetched() {
-    print('fetched');
-    fetched = true;
-  }
-
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, _ViewModel>(
-        converter: (Store<AppState> store) => _ViewModel.create(store),
-        builder: (BuildContext context, _ViewModel viewModel) =>
-            Column(children: <Widget>[
-              Expanded(
-                child: ProfessiogramsList(viewModel, fetched, setFetched),
-              ),
-              RaisedButton(
-                onPressed: viewModel.onSetProfessiogramsFromJson,
-                child: Text('press'),
-              )
-            ]));
+      converter: (Store<AppState> store) => _ViewModel.create(store),
+      builder: (BuildContext context, _ViewModel viewModel) =>
+          ProfessiogramsList(viewModel),
+    );
   }
 }
 
 class ProfessiogramsList extends StatelessWidget {
   final _ViewModel model;
 
-  ProfessiogramsList(this.model, fetched, setFetched) {
-    if (!fetched) {
-      print('sdf');
-      setFetched();
+  ProfessiogramsList(this.model) {
+    if (model.professiograms.length == 0) {
       model.onSetProfessiogramsFromJson();
     }
   }
@@ -52,18 +36,24 @@ class ProfessiogramsList extends StatelessWidget {
       children: model.professiograms
           .map((Professiogram professiogram) => GestureDetector(
                 child: Container(
+                  margin: EdgeInsets.all(2.0),
+                  padding: EdgeInsets.all(10.0),
                   height: 50,
-                  color: Colors.amber[600],
-                  child: Center(child: Text(professiogram.name)),
+                  color: Colors.lightBlueAccent,
+                  child: Center(
+                      child: Container(
+                    child: Text(professiogram.name),
+                    alignment: Alignment(-1.0, 0.0),
+                  )),
                 ),
                 onTap: () {
                   Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      ProfessiogramScreen(data: professiogram),
-                                ),
-                              );
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          ProfessiogramScreen(professiograms: professiogram),
+                    ),
+                  );
                 },
               ))
           .toList(),
@@ -81,10 +71,9 @@ class _ViewModel {
   });
 
   factory _ViewModel.create(Store<AppState> store) {
-    print('test2');
     _onSetProfessiogramsFromJsonAsync(Store<AppState> store) async {
-      String jsonString = await rootBundle
-          .loadString('assets/professiograms.json');
+      String jsonString =
+          await rootBundle.loadString('assets/professiograms.json');
       List<dynamic> item = json.decode(jsonString)['professiograms'].toList();
       store.dispatch(SetProfessiogramsFromJsonAction(item));
     }

@@ -2,29 +2,17 @@ import 'package:flutter/foundation.dart';
 
 class Professiogram {
   final String name;
-  final String description;
-  final String knowledge;
-  final String importantProperty;
-  final String medicalContraindications;
-  final String ways;
+  final List fields;
 
   Professiogram({
     @required this.name,
-    @required this.description,
-    @required this.knowledge,
-    @required this.importantProperty,
-    @required this.medicalContraindications,
-    @required this.ways,
+    @required this.fields,
   });
 
-  Professiogram copyWith({String name, String description, String knowledge, String importantProperty, String medicalContraindications, String ways}) {
+  Professiogram copyWith({String name, List<Map> fields}) {
     return Professiogram(
       name: name ?? this.name,
-      description: description ?? this.description,
-      knowledge: knowledge ?? this.knowledge,
-      importantProperty: importantProperty ?? this.importantProperty,
-      medicalContraindications: medicalContraindications ?? this.medicalContraindications,
-      ways: ways ?? this.ways,
+      fields: fields ?? this.fields,
     );
   }
 }

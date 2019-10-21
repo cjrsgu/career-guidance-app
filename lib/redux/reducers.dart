@@ -11,13 +11,10 @@ AppState appStateReducer(AppState state, action) {
 List<Professiogram> professiogramReducer(List<Professiogram> state, action) {
   if (action is ProfessiogramsOnDataEventAction) {
     List<Professiogram> list = [];
-    action.data.documents.forEach((f) => list.add(Professiogram(
+
+    action.data.forEach((f) => list.add(Professiogram(
         name: f.data['name'],
-        description: f.data['description'] ?? '',
-        knowledge: f.data['knowledge'] ?? '',
-        importantProperty: f.data['importantProperty'] ?? '',
-        medicalContraindications: f.data['medicalContraindications'] ?? '',
-        ways: f.data['ways'] ?? '',
+        fields: f.data['fields'] ?? [],
       ))
     );
 

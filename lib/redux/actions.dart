@@ -48,5 +48,5 @@ class ProfessiogramsOnDataEventAction {
     this._data = data;
   }
 
-  get data => this._data;
+  get data => this._data.documents;
 }
